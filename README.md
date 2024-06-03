@@ -9,8 +9,12 @@ $ sudo apt-get install libelf-dev gperf clang llvm linux-tools-`uname -r`
 
 
 For userspace program, you need to download libnetfilter first.
-```sh
-$ sudo apt-get install libnetfilter-dev
+```diff
+- $ sudo apt-get install libnetfilter-dev
++ sudo apt-get install libnetfilter-queue-dev
++ sudo apt-get install libnetfilter-log-dev
++ sudo apt-get install libnetfilter-conntrack-dev
+
 $ make user
 $ ./adblock
 ```
