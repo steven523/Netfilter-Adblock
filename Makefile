@@ -1,6 +1,7 @@
 KDIR := /lib/modules/$(shell uname -r)/build
 
 USRC = adblock.c tls.c http.c
+# USRC = adblock.c
 TARGET_MODULE := adblock
 
 

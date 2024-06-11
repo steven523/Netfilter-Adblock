@@ -65,6 +65,7 @@ static u_int32_t parse_pkt(struct nfq_data *tb, char **host)
     tcpHdr = (struct tcphdr *) (data + ip_hdr_size);  // located at +20
     tcp_hdr_size = (tcpHdr->th_off * 4);              // tcp header size
     tcp_data_area = data + ip_hdr_size + tcp_hdr_size;
+    //tcp_data_len = ret - ip_hdr_size - tcp_hdr_size;  // ret is total length
     tcp_data_len = ret - ip_hdr_size - tcp_hdr_size;  // ret is total length
 
     if (ipHdr->ip_p == TCPTYPE && tcp_hdr_size > 0) {
@@ -95,7 +96,7 @@ static int packet_handler(struct nfq_q_handle *qh,
     u_int8_t flag = 1;
     if (host != NULL) {
         printf("Host: %s\n", host);
-        char *ret = in_word_set(host, strlen(host));
+        const char *ret = in_word_set(host, strlen(host));
         if (ret)
             flag = 0;
         free(host);
