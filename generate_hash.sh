@@ -19,6 +19,6 @@ echo '%}' >> hosts.gperf
 echo '%%' >> hosts.gperf
 cat hosts >> hosts.gperf
 echo '%%' >> hosts.gperf
-gperf -L ANSI-C hosts.gperf > "$1/host_table.h"
+gperf -D -L ANSI-C hosts.gperf > "$1/host_table.h"
+# gperf -L ANSI-C hosts.gperf > "$1/host_table.h"
 rm hosts.gperf
-
